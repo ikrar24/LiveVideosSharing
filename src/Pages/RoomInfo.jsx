@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaShareAlt, FaPause, FaPlay } from "react-icons/fa";
 import { MdFullscreenExit, MdFullscreen } from "react-icons/md";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const RoomInfo = () => {
   const [ProgressWidth, setProgressWidth] = useState("");
@@ -47,6 +48,7 @@ const RoomInfo = () => {
   };
 
   // full screen handle
+
   const handleFullScreen = () => {
     if (!document.fullscreenElement) {
       videoContainerRef.current.requestFullscreen();
@@ -56,6 +58,8 @@ const RoomInfo = () => {
       setToggleFullScreen(false);
     }
   };
+
+
 
   // agar user Esc press karke fullscreen se bahar aaya
   useEffect(() => {
@@ -100,9 +104,10 @@ const RoomInfo = () => {
             className="w-[90%] h-[50vh] md:h-[80vh] rounded bg-black relative"
           >
             <video
-              src="https://res.cloudinary.com/dq2hmndgb/video/upload/v1724592636/lv_0_20250825143026_vfea8r.mp4"
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
               className="w-full h-full object-contain"
               ref={videoData}
+              muted
             ></video>
 
             {/* controls */}
@@ -116,7 +121,7 @@ const RoomInfo = () => {
                 <FaPlay onClick={handleVideoPlay} className="cursor-pointer" />
               )}
 
-              <div className="flex w-[80vw] items-center justify-between">
+              <div className="flex md:w-[80vw] w-[75vw] items-center justify-between">
                 <div className="flex gap-1">
                   <p>
                     {videoData.current
@@ -140,7 +145,7 @@ const RoomInfo = () => {
                 </div>
 
                 {/* fullscreen button */}
-                <div>
+                <div className="flex justify-center items-center gap-5">
                   {toggleFullScreen ? (
                     <MdFullscreenExit
                       className="text-3xl cursor-pointer"
@@ -152,6 +157,9 @@ const RoomInfo = () => {
                       onClick={handleFullScreen}
                     />
                   )}
+
+                  {/* qualityHandling  */}
+                  <div className="cursor-pointer" ><BsThreeDotsVertical/></div>
                 </div>
               </div>
             </div>

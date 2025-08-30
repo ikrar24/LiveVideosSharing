@@ -19,7 +19,7 @@ function JoinRoom({ ToggleJoinBtn, setJoinToggle }) {
     <section
       className={`${
         ToggleJoinBtn ? "flex" : "hidden"
-      } fixed w-full rounded-t-2xl h-[100%] bg-white text-gray-800 flex-col p-5`}
+      } fixed bottom-0 w-full rounded-t-2xl h-[90%] bg-white text-gray-800 flex-col p-5`}
     >
       {/* Close Icon */}
       <HiX

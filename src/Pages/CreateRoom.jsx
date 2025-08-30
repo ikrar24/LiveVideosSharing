@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiX } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 function CreateRoom({ ToggleCreateBtn, setCrateToggle }) {
   const [video, setVideo] = useState(null);
@@ -10,19 +11,19 @@ function CreateRoom({ ToggleCreateBtn, setCrateToggle }) {
     if (file && file.type.startsWith("video/")) {
       setVideo(URL.createObjectURL(file)); // preview ke liye blob url
     } else {
-      alert("Please select a valid video file!");
+      toast.error("Please select a valid video file!" ,{position:"top-center"})
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!video || !name) {
-      alert("Please upload a video and enter your name!");
+      toast.error("Please upload a video and enter your name!" , {position:"top-center"})
       return;
     }
     console.log("Video Selected:", video);
     console.log("Name:", name);
-    alert("Room Created Successfully!");
+    toast.success("Room Created Successfully!",{position:"top-center"});
     setCrateToggle(false); // modal close
   };
 
@@ -30,7 +31,7 @@ function CreateRoom({ ToggleCreateBtn, setCrateToggle }) {
     <section
       className={`${
         ToggleCreateBtn ? "flex" : "hidden"
-      } fixed w-full rounded-t-2xl h-[100%] bg-white text-gray-800 flex-col p-20 overflow-y-scroll createRoomSection `}
+      } fixed w-full rounded-t-2xl h-[90%] bg-white text-gray-800 flex-col p-20 overflow-y-scroll createRoomSection bottom-0 `}
     >
       {/* Close Icon */}
       <HiX
